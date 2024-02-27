@@ -1,47 +1,40 @@
 <template>
   <ul class="todo-list">
-    <AppTodoItem v-for="todo in todos" :key="todo.id" :todo="todo" @toggle-todo="toggleTodo" @remove-todo="removeTodo" />
+    <AppTodoItem
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+      @toggle-todo="toggleTodo"
+      @remove-todo="removeTodo"
+    />
   </ul>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import AppTodoItem from "./AppTodoItem.vue";
-import { Todo } from "../types/Todo";
-
-interface State {
-  todos: Todo[];
-}
+import { PropType, defineComponent } from 'vue';
+import AppTodoItem from './AppTodoItem.vue';
+import { Todo } from '@/types/Todo';
 
 export default defineComponent({
   components: {
     AppTodoItem,
   },
-  data(): State {
-    return {
-      todos: [
-        { id: 0, text: "Lear the basics of Vue", completed: true },
-        { id: 2, text: "Learn the basics of Typescript", completed: false },
-        { id: 1, text: "Subscribe to the channel", completed: false },
-      ],
-    };
+  props: {
+    todos: {
+      type: Array as PropType<Todo[]>
+    }
   },
   methods: {
-    toggleTodo(id: number){
-      const targetTodo = this.todos.find((todo: Todo) => todo.id === id)
-
-      if(targetTodo) {
-        targetTodo.completed = !targetTodo.completed
-      }
+    toggleTodo(id: number) {
+      this.$emit('toggleTodo', id)
     },
-    removeTodo(id: number){
-      const targetTodo = this.todos.find((todo: Todo) => todo.id === id)
-
-      if(targetTodo){
-        this.todos = this.todos.filter((todo: Todo) => todo.id !== id)
-      }
-
+    removeTodo(id: number) {
+      this.$emit('removeTodo', id)
     }
+  },
+  emits: {
+    toggleTodo: (id: number) => Number.isInteger(id),
+    removeTodo: (id: number) => Number.isInteger(id),
   }
-});
+})
 </script>
