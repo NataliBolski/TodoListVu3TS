@@ -13,7 +13,7 @@ export interface Stats {
 export default defineComponent({
   props: {
     stats: {
-      type: Object as PropType<stats>,
+      type: Object as PropType<Stats>,
       required: true,
     },
   },

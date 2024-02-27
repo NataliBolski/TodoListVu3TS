@@ -39,9 +39,9 @@ export default defineComponent({
   data(): State {
     return {
       todos: [
-        { id: 0, text: "Lear the basics of Vue", completed: true },
-        { id: 2, text: "Learn the basics of Typescript", completed: false },
-        { id: 1, text: "Subscribe to the channel", completed: false },
+        { id: 0, text: "Сходить на прогулку", completed: true },
+        { id: 2, text: "Покодить часок другой", completed: false },
+        { id: 1, text: "Почитать", completed: false },
       ],
       activeFilter: "All",
     };
