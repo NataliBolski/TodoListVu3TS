@@ -39,9 +39,9 @@ export default defineComponent({
   data(): State {
     return {
       todos: [
-        { id: 0, text: "Сказать Киру, что он малыш", completed: true },
-        { id: 2, text: "Потрогать Кира за пузико", completed: false },
-        { id: 1, text: "Укусить Кира за жёпу", completed: false },
+        { id: 0, text: "Подготовиться к собесу", completed: true },
+        { id: 2, text: "Почитать документацию", completed: false },
+        { id: 1, text: "Радоваться, что ты не дурак", completed: false },
       ],
       activeFilter: "All",
     };
